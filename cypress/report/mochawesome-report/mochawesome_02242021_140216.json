@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-02-24T17:01:54.706Z",
+    "end": "2021-02-24T17:02:16.295Z",
+    "duration": 21589,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "272467b4-e7bc-4302-afa9-c137f89677b7",
+      "title": "",
+      "fullFile": "cypress/integration/Compras.feature",
+      "file": "cypress/integration/Compras.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3e0bebf0-304a-4064-aed7-0fe12db8b5d6",
+          "title": "Realiza compra no Site Automation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Visualizar o Produto \"faded Short Sleeve\"",
+              "fullTitle": "Realiza compra no Site Automation Visualizar o Produto \"faded Short Sleeve\"",
+              "timedOut": null,
+              "duration": 21494,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "[\n  {\n    \"title\": \"Screenshot\",\n    \"value\": \"screenshots/Compras.feature/Acesso ao Site Realizado.png\"\n  },\n  {\n    \"title\": \"Screenshot\",\n    \"value\": \"screenshots/Compras.feature/Busca Realizada com Sucesso.png\"\n  },\n  {\n    \"title\": \"Screenshot\",\n    \"value\": \"screenshots/Compras.feature/Produto adicionado ao carrinho com Sucesso.png\"\n  },\n  {\n    \"title\": \"Screenshot\",\n    \"value\": \"screenshots/Compras.feature/Produto Verificado e Consta no Carrinho.png\"\n  }\n]",
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "549263aa-8bfe-45ca-85c7-50e927b60fbe",
+              "parentUUID": "3e0bebf0-304a-4064-aed7-0fe12db8b5d6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "549263aa-8bfe-45ca-85c7-50e927b60fbe"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 21494,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss",
+        "reportTitle": "Report da Execucação",
+        "cdn": true,
+        "charts": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^6.5.0",
+    "cypress-cucumber-preprocessor": "^4.0.1"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^1.3.0",
+    "cypress-wait-until": "^1.7.1",
+    "cypress-xpath": "^1.6.2",
+    "eslint": "^7.20.0",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:run": "npx cypress run --spec 'cypress/integration/Compras.feature' --headless --record --key a2d79573-1ab8-47b4-a28f-4e5eebfff112",
+    "cy:run": "npm run cypress:run -- --browser firefox --group Frirefox --ci-build-id 1 & npm run cypress:run -- --browser chrome --group Chrome --ci-build-id 1 ",
+    "firefox:run": "cypress run --browser firefox --headless",
+    "report:cleanup": "rm -fr cypress/report/",
+    "video:cleanup": "rm -fr cypress/videos/",
+    "report:merge": "mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/output.json",
+    "report:generate": "marge cypress/report/output.json --reportDir ./ --inline",
+    "start": "node cypress-automation-run.js",
+    "lint": "npx eslint ./cypress",
+    "lint:fix": "npx eslint ./cypress --fix"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/support/steps"
+  },
+  "author": "",
+  "license": "ISC"
+}
