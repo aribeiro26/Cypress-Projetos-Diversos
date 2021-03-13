@@ -1,5 +1,5 @@
 {
-  "name": "cypress",
+  "name": "prova",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open",
+    "cy:open": "cypress open",
     "cypress:run": "npx cypress run --spec 'cypress/integration/Compras.feature' --headless --record --key a2d79573-1ab8-47b4-a28f-4e5eebfff112",
     "cy:run": "npm run cypress:run -- --browser firefox --group Frirefox --ci-build-id 1 & npm run cypress:run -- --browser chrome --group Chrome --ci-build-id 1 ",
     "firefox:run": "cypress run --browser firefox --headless",
