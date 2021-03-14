@@ -4,104 +4,90 @@ Feature: Realizar Testes da Interface de Cadastro de Usuarios da Stefanini
 
     Given Acessar o site Prova Stefanini
     
-    Scenario: Validar os campos vazios
+    Scenario: Validar os campos vazios - Cenario 1
         
         When Validar o Layout      
         Then Validar que os campos Input estao vazios
 
-    Scenario Outline: Validar Mensagem de Campos Obrigatorios - Nome
+    Scenario Outline: Validar Mensagem de Campos Obrigatorios - Nome - Cenario 2
 
-        When Validar Campo nome Está vazio "<nome>"
-        Then Validar Mensagem de Campo Nome é Obrigatorio "O campo Nome é obrigatório."
+        And Preencher o campo email "<email>" "<Inputemail>"
+        And Preencher o campo senha "<pass>" "<Inputsenha>"
+        When Clicar no botão Cadastrar "<Botao>"
+        Then Validar Mensagem de Campo Nome é Obrigatorio "<MsgNome>"
 
         Examples:
-        | pass     | email | nome | Inputnome   | Inputemail        | Inputsenha|
-        | #password| #email| #name| Magno Silva | magno@teste.com.br| St123456  |
+        | pass     | email | Inputemail        | Inputsenha| Botao    | MsgNome                     |
+        | #password| #email| magno@teste.com.br| St123456  | Cadastrar| O campo Nome é obrigatório. |
 
-    Scenario Outline: Validar Mensagem de Campos Obrigatorios - Email
+    Scenario Outline: Validar Mensagem de Campos Obrigatorios - Email - Cenario 3
 
-        When Validar Campo Email Está vazio "<email>"
-        Then Validar Mensagem de Campo Email é Obrigatorio "O campo E-mail é obrigatório."
-
-            Examples:
-            | pass     | email | nome | Inputnome   | Inputemail        | Inputsenha|
-            | #password| #email| #name| Magno Silva | magno@teste.com.br| St123456  |
-
-    Scenario Outline: Validar Mensagem de Campos Obrigatorios - Senha
-
-        When Validar Campo senha Está vazio "<pass>"                    
-        Then Validar Mensagem de Campo senha é Obrigatorio "O campo Senha é obrigatório."
-
-            Examples:
-            | pass     | email | nome | Inputnome   | Inputemail        | Inputsenha|
-            | #password| #email| #name| Magno Silva | magno@teste.com.br| St123456  |
-
-    Scenario Outline: Validar Mensagem de Campo email não preenchido - EMAIL
-
-        When Preencher os campos nome e senha "<Inputnome>" "<Inputsenha>"                    
-        Then Validar Mensagem de Campo E-mail é Obrigatorio "O campo E-mail é obrigatório."
+        And Preencher o campo nome "<nome>" "<Inputnome>"
+        And Preencher o campo senha "<pass>" "<Inputsenha>"
+        When Clicar no botão Cadastrar "<Botao>"
+        Then Validar Mensagem de Campo Email é Obrigatorio "<Msgemail>"
         
             Examples:
-            | pass     | email | nome | Inputnome   | Inputemail        | Inputsenha|
-            | #password| #email| #name| Magno Silva | magno@teste.com.br| St123456  |
+           | pass     | nome | Inputnome  | Inputsenha| Botao    | Msgemail                       |
+           | #password| #name| Magno Silva| St123456  | Cadastrar| O campo E-mail é obrigatório.  |
 
-    Scenario Outline: Validar Mensagem de Campo Senha não preenchido - Senha
+    Scenario Outline: Validar Mensagem de Campos Obrigatorios - Senha - Cenario 4
 
-        When Preencher os campos nome e email "<Inputnome>" "<Inputemail>"                    
-        Then Validar Mensagem de Campo Senha é Obrigatorio "O campo Senha é obrigatório."
+        And Preencher o campo nome "<nome>" "<Inputnome>"
+        And Preencher o campo email "<email>" "<Inputemail>"
+        When Clicar no botão Cadastrar "<Botao>"
+        Then Validar Mensagem de Campo Senha é Obrigatorio "<Msgsenha>"
+        
+            Examples:
+           | email     | nome | Inputnome  | Inputemail           | Botao    | Msgsenha                       |
+           | #email    | #name| Magno Silva| magno@teste.com.br   | Cadastrar| O campo Senha é obrigatório.   |
 
+    Scenario Outline: Validar Mensagem de Campos Obrigatorios não preenchido  - Cenario 5
 
-
-        Examples:
-        | pass     | email | nome | Inputnome   | Inputemail        | Inputsenha|
-        | #password| #email| #name| Magno Silva | magno@teste.com.br| St123456  |
-
-    Scenario Outline: Validar Mensagem de Campos Obrigatorios não preenchido.
-
-        When Clicar no campo Qualquer e Teclar a tecla Enter                   
+        When Clicar no botão Cadastrar "<Botao>"                   
         Then Validar Mensagens de Alerta dos campos "<MsgNome>" "<MsgEmail>" "<MsgSenha>"
 
         Examples:
-        | MsgNome                    | MsgEmail                    | MsgSenha                     |
-        | O campo Nome é obrigatório.|O campo E-mail é obrigatório.| O campo Senha é obrigatório. |
+        | MsgNome                    | MsgEmail                    | MsgSenha                     | Botao    |
+        | O campo Nome é obrigatório.|O campo E-mail é obrigatório.| O campo Senha é obrigatório. | Cadastrar|
 
-    Scenario Outline: Validar Mensagem de Campo Nome Parcialmente Preenchido - Nome Parcial
+    Scenario Outline: Validar Mensagem de Campo Nome Parcialmente Preenchido - Nome Parcial  - Cenario 6
 
         And Preencher o campo Nome incompleto "<nome>" "<Inputnome>" 
         And Preencher o campo email "<email>" "<Inputemail>" 
         And Preencher o campo senha "<pass>" "<Inputsenha>"                   
-        When Clicar no campo nome e Teclar a tecla Enter "<nome>"
+        When Clicar no botão Cadastrar "Cadastrar" 
         Then Validar Mensagens de Alerta do campo Nome "<MsgNome>"
 
         Examples:
         | pass     | email | nome | Inputnome| Inputemail        | Inputsenha| MsgNome                            |
         | #password| #email| #name| Magno    | magno@teste.com.br| St123456  | Por favor, insira um nome completo.|
 
-    Scenario Outline: Validar Mensagem de Campo Email Incorreto - Email Inválido
+    Scenario Outline: Validar Mensagem de Campo Email Incorreto - Email Inválido - Cenario 7
 
         And Preencher o campo Nome completo "<nome>" "<Inputnome>" 
         And Preencher o campo email com email inválido "<email>" "<Inputemail>" 
         And Preencher o campo senha "<pass>" "<Inputsenha>"                   
-        When Clicar no campo email e Teclar a tecla Enter "<email>"
+        When Clicar no botão Cadastrar "<Botao>" 
         Then Validar Mensagens de Alerta do campo Email "<MsgEmail>"
 
         Examples:
-        | pass     | email | nome | Inputnome  | Inputemail        | Inputsenha| MsgEmail                           |
-        | #password| #email| #name| Magno Silva| magno.teste.com.br| St123456  | Por favor, insira um e-mail válido.|
+        | pass     | Botao     | email | nome | Inputnome  | Inputemail        | Inputsenha| MsgEmail                           |
+        | #password| Cadastrar | #email| #name| Magno Silva| magno.teste.com.br| St123456  | Por favor, insira um e-mail válido.|
 
-    Scenario Outline: Validar Mensagem do Campo Senha com quantidade de caracter Inválida - Senha Inválido
+    Scenario Outline: Validar Mensagem do Campo Senha com quantidade de caracter Inválida - Senha Inválido - Cenario 8
 
         And Preencher o campo Nome completo "<nome>" "<Inputnome>" 
         And Preencher o campo email "<email>" "<Inputemail>" 
         And Preencher o campo senha com quantidade de caracteres inválida "<pass>" "<Inputsenha>"                   
-        When Clicar no campo senha e Teclar a tecla Enter "<pass>"
+        When Clicar no botão Cadastrar "<Botao>" 
         Then Validar Mensagens de Alerta do campo Senha "<MsgSenha>"
 
         Examples:
-        | pass     | email | nome | Inputnome  | Inputemail        | Inputsenha| MsgSenha                                  |
-        | #password| #email| #name| Magno Silva| magno@teste.com.br| St123     | A senha deve conter ao menos 8 caracteres.|
+        | pass     | Botao     | email | nome | Inputnome  | Inputemail        | Inputsenha| MsgSenha                                  |
+        | #password| Cadastrar | #email| #name| Magno Silva| magno@teste.com.br| St123     | A senha deve conter ao menos 8 caracteres.|
 
-    Scenario: Cadastrar Usuario
+    Scenario: Cadastrar Usuario - Cenario 9
 
         And Preencher o campo Nome completo "#name" "Magno Silva" 
         And Preencher o campo email "#email" "magno@teste.com.br" 
@@ -109,7 +95,7 @@ Feature: Realizar Testes da Interface de Cadastro de Usuarios da Stefanini
         When Clicar no Botão Cadastrar "Cadastrar"
         Then Validar Usuário Cadastrado "Magno Silva" 
 
-    Scenario: Cadastrar Usuarios - Cadastrar Dois Usuários
+    Scenario: Cadastrar Usuarios - Cadastrar Dois Usuários - Cenario 10
         
         And Preencher o campo Nome completo "#name" "Magno Silva" 
         And Preencher o campo email "#email" "magno@teste.com.br" 
@@ -121,7 +107,7 @@ Feature: Realizar Testes da Interface de Cadastro de Usuarios da Stefanini
         When Clicar no Botão Cadastrar "Cadastrar"
         Then Validar Usuários Cadastrados "Magno Silva" "Alexi James" 
 
-    Scenario: Excluir o Primeiro Usuario Cadastrado - Excluir Usuário
+    Scenario: Excluir o Primeiro Usuario Cadastrado - Excluir Usuário - Cenario 11
         
         And Preencher o campo Nome completo "#name" "Magno Silva" 
         And Preencher o campo email "#email" "magno@teste.com.br" 

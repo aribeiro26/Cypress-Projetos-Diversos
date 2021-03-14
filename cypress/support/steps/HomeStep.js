@@ -17,11 +17,18 @@ Then(/^Validar que os campos Input estao vazios$/, () => {
 	page.ValidaCampoVazio();
 });
 
+And('Preencher o campo email {string} {string}', (var1,var2) => {
+    page.Escrever(var1,var2)
+	
+});
 
+And('Preencher o campo senha {string} {string}', (var1,var2) => {
+	page.Escrever(var1,var2)
+	
+});
 
-When('Validar Campo nome Está vazio {string}', (elemento) => {
-    page.ValidaCampoVazio();
-    page.AcionarAçãoTeclado(elemento)
+When('Clicar no botão Cadastrar {string}', (botao) => {
+	page.Clicar(botao)
 
 });
 
@@ -31,9 +38,18 @@ Then('Validar Mensagem de Campo Nome é Obrigatorio {string}', (texto) => {
     
 });
 
-When('Validar Campo Email Está vazio {string}', (elemento) => {
-    page.ValidaCampoVazio();
-    page.AcionarAçãoTeclado(elemento)
+And('Preencher o campo nome {string} {string}', (var1,var2) => {
+    page.Escrever(var1,var2)
+	
+});
+
+And('Preencher o campo senha {string} {string}', (var1,var2) => {
+	page.Escrever(var1,var2)
+	
+});
+
+When('Clicar no botão Cadastrar {string}', (botao) => {
+	page.Clicar(botao)
 
 });
 
@@ -42,36 +58,18 @@ Then('Validar Mensagem de Campo Email é Obrigatorio {string}', (texto) => {
     
     
 });
-
-When('Validar Campo senha Está vazio {string}', (elemento) => {
-    page.ValidaCampoVazio();
-    page.AcionarAçãoTeclado(elemento)
-
+And('Preencher o campo nome {string} {string}', (var1,var2) => {
+    page.Escrever(var1,var2)
+	
 });
 
-Then('Validar Mensagem de Campo senha é Obrigatorio {string}', (texto) => {
-	page.ValidarTexto(texto)
-    
-    
+And('Preencher o campo email {string} {string}', (var1,var2) => {
+	page.Escrever(var1,var2)
+	
 });
 
-When('Preencher os campos nome e senha {string} {string}', (var1,var2) => {
-    page.Escrever('#name',var1)
-	page.Escrever('#password',var2)
-	page.AcionarAçãoTeclado('#email')
-
-});
-
-Then('Validar Mensagem de Campo E-mail é Obrigatorio {string}', (texto) => {
-	page.ValidarTexto(texto)
-    
-    
-});
-
-When('Preencher os campos nome e email {string} {string}', (var1,var2) => {
-    page.Escrever('#name',var1)
-	page.Escrever('#email',var2)
-	page.AcionarAçãoTeclado('#email')
+When('Clicar no botão Cadastrar {string}', (botao) => {
+	page.Clicar(botao)
 
 });
 
@@ -81,9 +79,8 @@ Then('Validar Mensagem de Campo Senha é Obrigatorio {string}', (texto) => {
     
 });
 
-
-When(/^Clicar no campo Qualquer e Teclar a tecla Enter$/, () => {
-	page.AcionarAçãoTeclado('#name')
+When('Clicar no botão Cadastrar {string}', (botao) => {
+	page.Clicar(botao)
 });
 
 
@@ -110,8 +107,8 @@ And('Preencher o campo senha {string} {string}', (var1,var2) => {
 
 });
 
-When('Clicar no campo nome e Teclar a tecla Enter {string}', (var1) => {
-	page.AcionarAçãoTeclado(var1)
+When('Clicar no botão Cadastrar {string}', (botao) => {
+	page.Clicar(botao)
     
     
 });
@@ -136,8 +133,8 @@ And('Preencher o campo senha {string} {string}', (var1,var2) => {
 
 });
 
-When('Clicar no campo email e Teclar a tecla Enter {string}', (var1) => {
-	page.AcionarAçãoTeclado(var1)
+When('Clicar no botão Cadastrar {string}', (botao) => {
+	page.Clicar(botao)
     
     
 });
@@ -162,8 +159,8 @@ And('Preencher o campo senha com quantidade de caracteres inválida {string} {st
 
 });
 
-When('Clicar no campo senha e Teclar a tecla Enter {string}', (var1) => {
-	page.AcionarAçãoTeclado(var1)
+When('Clicar no Botão Cadastrar {string}', (botao) => {
+	page.Clicar(botao)
     
     
 });
