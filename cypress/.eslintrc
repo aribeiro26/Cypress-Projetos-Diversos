@@ -1,42 +1,12 @@
 {
+    "extends": ["airbnb-base", "prettier"],
+    "plugins": ["cypress", "prettier"],
     "env": {
-        "es6": true,
-        "node": true
-    },
-    "extends": [
-        "airbnb-base",
-        "plugin:cypress/recommended"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+      "browser": true,
+      "cypress/globals": true,
+      "jest": true
     },
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "max-len": [
-            "warn",
-            120
-        ],
-        "no-global-assign": [
-            "warn"
-        ],
-        "spaced-comment": [
-            "error",
-            "always",
-            {
-                "line": {
-                    "markers": [
-                        "/"
-                    ]
-                }
-            }
-        ]
+      "prettier/prettier": "error"
     }
-}
+  }

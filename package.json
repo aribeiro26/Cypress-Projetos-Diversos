@@ -17,18 +17,13 @@
     "mochawesome-report-generator": "^5.2.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cy:open": "cypress open",
-    "cypress:run": "npx cypress run --spec 'cypress/integration/Compras.feature' --headless --record --key a2d79573-1ab8-47b4-a28f-4e5eebfff112",
-    "cy:run": "npm run cypress:run -- --browser firefox --group Frirefox --ci-build-id 1 & npm run cypress:run -- --browser chrome --group Chrome --ci-build-id 1 ",
-    "firefox:run": "cypress run --browser firefox --headless",
-    "report:cleanup": "rm -fr cypress/report/",
-    "video:cleanup": "rm -fr cypress/videos/",
-    "report:merge": "mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/output.json",
-    "report:generate": "marge cypress/report/output.json --reportDir ./ --inline",
-    "start": "node cypress-automation-run.js",
-    "lint": "npx eslint ./cypress",
-    "lint:fix": "npx eslint ./cypress --fix"
+    "cy:run": "cypress run --browser chrome --headless --config video=true --env allure=true",
+    "cy:open": "cypress open --config video=false --env allure=true",
+    "allure:report": "allure generate allure-results",
+    "allure:clear": "rm -r allure-results/ allure-report || true",
+    "allure:open": "allure open allure-report",
+    "test": "npx npm-run-all allure:clear cy:run allure:report"
+    
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/steps"

@@ -85,14 +85,14 @@ class FuncoesTeste {
             },
             Escrever(){
                 if(this.TipoChave == 'get'){
-                    cy.get(''+elemento+'',{timeout: 2000}).clear({delay: 200}) 
-                    cy.focused().clear()
-                    cy.get(''+elemento+'',{timeout:2000}).click(validacao).clear()
+                    //cy.get(''+elemento+'',{timeout: 2000}).clear({delay: 200}) 
+                    //cy.focused().clear()
+                    cy.get(''+elemento+'',{timeout:2000}).click(validacao)
                     .type(''+texto+'');
                 }else if(this.TipoChave == 'xpath'){
-                    cy.xpath(''+elemento+'',{timeout: 2000}).clear({delay: 200}) 
-                    cy.focused().clear()
-                    cy.xpath(''+elemento+'',{timeout:2000}).click(validacao).clear()
+                    //cy.xpath(''+elemento+'',{timeout: 2000}).clear({delay: 200}) 
+                    //cy.focused().clear()
+                    cy.xpath(''+elemento+'',{timeout:2000}).click(validacao)
                     .type(''+texto+'');
 
                 }else{

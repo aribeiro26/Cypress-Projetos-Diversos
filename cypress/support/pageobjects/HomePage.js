@@ -39,27 +39,34 @@ class HomePage {
         fuc.criarTeste().screenShot('Campos Estão vazios',200)
     }
 
-    ElementosClick(elemento){
+    AcionarAçãoTeclado(elemento){
         
         fuc.criarTeste('get',''+elemento+'','','{enter}')
        .Escrever();
+       fuc.criarTeste().screenShot('Mensagem validada do campo',200)
     }
 
-    MensagemObrigatorio(texto){
+    ValidarTexto(texto){
         
         fuc.criarTeste('xpath','//*[text()=\''+texto+'\']','have.text',''+texto+'')
         .ValidaTexto();
+        fuc.criarTeste().screenShot('Texto Validado',200)
     }
 
-    EscreverNomes(elemento,texto){
+    Escrever(elemento,texto){
         
         fuc.criarTeste('get',''+elemento+'','',''+texto+'')
        .Escrever();
+       fuc.criarTeste().screenShot('Campo texto Preenchido',200)
     }
-    button(texto){
+    Clicar(texto){
         fuc.criarTeste('xpath','//*[text()=\''+texto+'\']','be.visible')
         .Click();
 
+    }
+    ExcluirUsuario(id,texto){
+        fuc.criarTeste('xpath','//*[@id=\''+id+'\' and text()=\''+texto+'\']','be.visible')
+        .Click();
     }
 
 }
