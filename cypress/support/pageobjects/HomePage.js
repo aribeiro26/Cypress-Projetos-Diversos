@@ -62,11 +62,13 @@ class HomePage {
     Clicar(texto){
         fuc.criarTeste('xpath','//*[text()=\''+texto+'\']','be.visible')
         .Click();
+        fuc.criarTeste().screenShot('Usuário Cadastrado',200)
 
     }
     ExcluirUsuario(id,texto){
         fuc.criarTeste('xpath','//*[@id=\''+id+'\' and text()=\''+texto+'\']','be.visible')
         .Click();
+        fuc.criarTeste().screenShot('Usuário Excluido',200)
     }
 
 }

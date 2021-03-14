@@ -5,9 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "cypress": "^6.5.0",
-    "cypress-cucumber-preprocessor": "^4.0.1"
+    "cypress-cucumber-preprocessor": "^4.0.1",
+    "multiple-cucumber-html-reporter": "^1.18.0"
   },
   "devDependencies": {
+    "cucumber-html-reporter": "^5.3.0",
     "cypress-mochawesome-reporter": "^1.3.0",
     "cypress-wait-until": "^1.7.1",
     "cypress-xpath": "^1.6.2",
@@ -22,11 +24,18 @@
     "allure:report": "allure generate allure-results",
     "allure:clear": "rm -r allure-results/ allure-report || true",
     "allure:open": "allure open allure-report",
-    "test": "npx npm-run-all allure:clear cy:run allure:report"
-    
+    "postcypress:run": "node ./cypress/support/multiple-cucumber-html-reporter.js && node ./cypress/support/cucumber-html-reporter.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "cypress-cucumber-preprocessor": {
-    "step_definitions": "cypress/support/steps"
+    "step_definitions": "cypress/support/steps",
+    
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".json"
+    }
   },
   "author": "",
   "license": "ISC"
